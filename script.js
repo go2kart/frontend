@@ -13,15 +13,11 @@
 
 // Use relative /api when served via nginx (port 80/443, local Docker or EC2).
 // Fall back to direct backend URL when opening index.html as a file or via Live Server.
-const API =
-  (
-    location.protocol === 'file:' ||
-    location.port === '5500' ||
-    location.port === '3000' ||
-    location.hostname.includes('github.io')
-  )
-    ? 'https://go2kart-api.devopsindia.dev/api'
-    : '/api';
+const API = 'https://go2kart-api.devopsindia.dev/api';
+
+// const API = (location.protocol === 'file:' || location.port === '5500' || location.port === '3000')
+//   ? 'https://go2kart-api.devopsindia.dev/api'
+//   : '/api';
 
 let currentUser  = null;   // { id, name, email, role }
 let jwtToken     = localStorage.getItem('gk_token') || null;
